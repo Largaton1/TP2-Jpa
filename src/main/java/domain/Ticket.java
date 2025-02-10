@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -10,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Ticket {
+public class Ticket implements Serializable {
     
     private long id;
     private double prix;

@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +13,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Client")
-public class Client extends Personne{
+public class Client extends Personne implements Serializable {
 
     private long id;
     private List<Ticket> ticket;
