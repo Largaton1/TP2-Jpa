@@ -28,3 +28,6 @@ alter table Ticket add constraint FKlvllu1i2v26qk9xu0vd5bnxry foreign key (utili
 alter table Ticket add constraint FKnxp90mos6ebnx1toph4oqo6a foreign key (evenement_id) references Evenement
 ALTER SEQUENCE PUBLIC.PERSONNE_SEQ RESTART WITH 51
 DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+ALTER SEQUENCE PUBLIC.PERSONNE_SEQ RESTART WITH 101
+DISCONNECT

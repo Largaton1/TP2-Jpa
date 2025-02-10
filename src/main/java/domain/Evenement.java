@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-public class Evenement {
+public class Evenement implements Serializable {
 
     private Long id;
     private String nomEvent;
@@ -54,7 +55,7 @@ public class Evenement {
 
    
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

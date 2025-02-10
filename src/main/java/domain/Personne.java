@@ -33,7 +33,7 @@ public abstract class Personne {
     }
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 16)
     public long getId() {
         return this.id;
