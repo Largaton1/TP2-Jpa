@@ -2,6 +2,7 @@ package domain;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ public class Administrateur extends Personne {
     private long id;
     private List<Evenement> evenement;
     
-    protected Administrateur() {
+    public Administrateur() {
     }
 
     public Administrateur(long id, List<Evenement> evenement) {
@@ -33,7 +34,7 @@ public class Administrateur extends Personne {
     public void setId(long id) {
         this.id = id;
     }
-    @OneToMany(mappedBy = "administrateur")
+    @OneToMany(mappedBy = "administrateur", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Evenement> getEvenement() {
         return evenement;
     }

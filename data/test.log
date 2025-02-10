@@ -2,7 +2,29 @@
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 COMMIT
 /*C3*/SET SCHEMA PUBLIC
-create sequence Utilisateur_SEQ start with 1 increment by 50
-create table Utilisateur (id bigint not null, nom varchar(100), password varchar(100), prenom varchar(100), email varchar(255) not null, primary key (id))
-ALTER SEQUENCE PUBLIC.UTILISATEUR_SEQ RESTART WITH 51
+DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+create sequence Evenement_SEQ start with 1 increment by 50
+create sequence Personne_SEQ start with 1 increment by 50
+create sequence Ticket_SEQ start with 1 increment by 50
+create table Administrateur (id bigint not null, primary key (id))
+create table Client (id bigint not null, primary key (id))
+create table Evenement (capacite integer not null, date date, administrateur_id bigint not null, id bigint not null, organisateur_id bigint not null, Statut varchar(20) check (Statut in ('EnCours','Annule','Termine')), description varchar(255), lieu varchar(255), nomEvent varchar(255), primary key (id))
+create table Organisateur (id bigint not null, primary key (id))
+create table Personne (id bigint not null, nom varchar(100), prenom varchar(100), email varchar(255) not null, password varchar(255) not null, primary key (id))
+create table Ticket (estValide boolean not null, numPlace integer not null, prix float(53) not null, evenement_id bigint not null, id bigint not null, utilisateur_id bigint not null, primary key (id))
+alter table Administrateur add constraint FK1kjpek4wtxvnymeprr14rek2f foreign key (id) references Personne
+alter table Client add constraint FKc3qeuiptc0xb9jh3t1pmgsm99 foreign key (id) references Personne
+alter table Evenement add constraint FKgs49n022rcom2t24u9ssh0760 foreign key (administrateur_id) references Administrateur
+alter table Evenement add constraint FKq3rhcjv5nwm08c2sfj4pjr920 foreign key (organisateur_id) references Organisateur
+alter table Organisateur add constraint FKj0u8e2tkvvowxkhi2u9jwbmrm foreign key (id) references Personne
+alter table Ticket add constraint FKlvllu1i2v26qk9xu0vd5bnxry foreign key (utilisateur_id) references Client
+alter table Ticket add constraint FKnxp90mos6ebnx1toph4oqo6a foreign key (evenement_id) references Evenement
+ALTER SEQUENCE PUBLIC.PERSONNE_SEQ RESTART WITH 51
 DISCONNECT

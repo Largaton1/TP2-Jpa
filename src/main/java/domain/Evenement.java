@@ -3,6 +3,7 @@ package domain;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
@@ -27,9 +29,14 @@ public class Evenement {
     private statutEvent statut;
     private List<Ticket> tickets;
     private Organisateur organisateur;
+   
+    private Administrateur administrateur;
+
+    
 
 
-    protected Evenement() {
+
+    public Evenement() {
     }
     
 
@@ -96,7 +103,7 @@ public class Evenement {
         this.statut = statut;
     }
 
-    @OneToMany(mappedBy = "evenement")
+    @OneToMany(mappedBy = "evenement", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Ticket> getTickets() {
         return tickets;
     }
@@ -106,6 +113,7 @@ public class Evenement {
     }
 
     @ManyToOne
+    @JoinColumn(name = "organisateur_id", nullable = false)
     public Organisateur getOrganisateur() {
         return organisateur;
     }
@@ -113,6 +121,17 @@ public class Evenement {
 
     public void setOrganisateur(Organisateur organisateur) {
         this.organisateur = organisateur;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "administrateur_id", nullable = false)
+    public Administrateur getAdministrateur() {
+        return administrateur;
+    }
+
+
+    public void setAdministrateur(Administrateur administrateur) {
+        this.administrateur = administrateur;
     }
 
 

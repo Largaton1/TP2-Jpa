@@ -19,7 +19,7 @@ public abstract class Personne {
     private String password;
 
 
-    protected Personne(){
+    public Personne(){
         
     }
 
@@ -70,7 +70,7 @@ public abstract class Personne {
         this.email = email;
     }
 
-    @Column(length = 100)
+    @Column(nullable = false)
     public String getPassword() {
         return this.password;
     }

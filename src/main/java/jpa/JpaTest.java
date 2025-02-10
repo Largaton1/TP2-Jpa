@@ -1,6 +1,11 @@
 package jpa;
 
+import domain.Administrateur;
+import domain.Evenement;
+import domain.Organisateur;
 import domain.Personne;
+import domain.Ticket;
+import domain.Client;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -24,7 +29,16 @@ public class JpaTest {
 		tx.begin();
 		try {
 			//Personne user = new Personne();
-			//EntityManagerHelper.getEntityManager().persist(user);
+			Administrateur admin = new Administrateur();
+			Organisateur organisateur = new Organisateur();
+			Client client = new Client();
+			Evenement event = new Evenement();
+			Ticket ticket = new Ticket();
+			EntityManagerHelper.getEntityManager().persist(admin);
+			EntityManagerHelper.getEntityManager().persist(organisateur);
+			EntityManagerHelper.getEntityManager().persist(event);
+			EntityManagerHelper.getEntityManager().persist(ticket);
+			EntityManagerHelper.getEntityManager().persist(client);
 
 			// TODO create and persist entity
 		} catch (Exception e) {
