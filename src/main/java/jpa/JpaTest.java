@@ -1,6 +1,6 @@
 package jpa;
 
-
+import domain.Personne;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -23,6 +23,8 @@ public class JpaTest {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
+			//Personne user = new Personne();
+			//EntityManagerHelper.getEntityManager().persist(user);
 
 			// TODO create and persist entity
 		} catch (Exception e) {

@@ -1,0 +1,8 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C3*/SET SCHEMA PUBLIC
+create sequence Utilisateur_SEQ start with 1 increment by 50
+create table Utilisateur (id bigint not null, nom varchar(100), password varchar(100), prenom varchar(100), email varchar(255) not null, primary key (id))
+ALTER SEQUENCE PUBLIC.UTILISATEUR_SEQ RESTART WITH 51
+DISCONNECT
