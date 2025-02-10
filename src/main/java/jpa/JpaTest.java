@@ -1,6 +1,5 @@
 package jpa;
-
-import dao.EvenementDao;
+import dao.*;
 import domain.Administrateur;
 import domain.Evenement;
 import domain.Organisateur;
@@ -31,14 +30,28 @@ public class JpaTest {
 
 		
 		try {
+
+			Administrateur admin = new Administrateur();
+			AdministrateurDao daoAdmin = new AdministrateurDao();
+            admin.setNom("Admin1");
+			admin.setEmail("admin@example.com");
+			admin.setPassword("12345678");
+			daoAdmin.save(admin);
+            
+
+            Organisateur organisateur = new Organisateur();
+			OrganisateurDao daoOrganisateur = new OrganisateurDao();
+            organisateur.setNom("Organisateur1");
+			organisateur.setEmail("admin@example.com");
+			organisateur.setPassword("12345678");
+            daoOrganisateur.save(organisateur);
 		
 			Evenement event = new Evenement();
 			EvenementDao dao = new EvenementDao();
 			event.setNomEvent("Concert Geant");
 			event.setCapacite(10);
-			event.setAdministrateur(null);
-			event.setOrganisateur(null);
-			EntityManagerHelper.getEntityManager().persist(event);
+			event.setAdministrateur(admin);
+            event.setOrganisateur(organisateur);
 			dao.save(event);
 			/* Administrateur admin = new Administrateur();
 			Organisateur organisateur = new Organisateur();

@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +13,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Administrateur")
-public class Administrateur extends Personne {
+public class Administrateur extends Personne implements Serializable {
 
     private long id;
     private List<Evenement> evenement;
