@@ -19,18 +19,18 @@ public class Ticket {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "evenement_id", nullable = false)
-    private Evenement evenement;
+    @JoinColumn(name = "concert_id", nullable = false)
+    private Concert concert;
     private Double prix;
-    private boolean isUsed; 
+    private boolean used; 
 
     public Ticket() {}
 
-    public Ticket(User user, Evenement evenement, Double prix) {
+    public Ticket(User user, Concert concert, Double prix) {
         this.user = user;
-        this.evenement = evenement;
+        this.concert = concert;
         this.prix = prix;
-        this.isUsed = false;
+        this.used = false;
     }
 
     // Getters et Setters
@@ -50,12 +50,12 @@ public class Ticket {
         this.user = user;
     }
 
-    public Evenement getEvenement() {
-        return evenement;
+    public Concert getConcert() {
+        return concert;
     }
 
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
+    public void setConcert(Concert concert) {
+        this.concert = concert;
     }
 
     public Double getPrix() {
@@ -67,10 +67,10 @@ public class Ticket {
     }
 
     public boolean isUsed() {
-        return isUsed;
+        return used;
     }
 
     public void setUsed(boolean used) {
-        isUsed = used;
+        this.used = used;
     }
 }
