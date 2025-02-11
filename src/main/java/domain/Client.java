@@ -30,9 +30,11 @@ public class Client extends Personne implements Serializable {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+    @Override
     public long getId() {
         return id;
     }
+    @Override
     public void setId(long id) {
         this.id = id;
     }

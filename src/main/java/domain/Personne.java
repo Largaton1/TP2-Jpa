@@ -90,7 +90,5 @@ public abstract class Personne {
             ", password='" + getPassword() + "'" +
             "}";
     }
-   
-
     
 }

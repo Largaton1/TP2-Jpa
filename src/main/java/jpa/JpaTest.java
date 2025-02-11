@@ -1,13 +1,11 @@
 package jpa;
-import dao.*;
+import dao.AdministrateurDao;
+import dao.EvenementDao;
+import dao.OrganisateurDao;
 import domain.Administrateur;
 import domain.Evenement;
 import domain.Organisateur;
-import domain.Personne;
-import domain.Ticket;
-import domain.Client;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 
 public class JpaTest {
 

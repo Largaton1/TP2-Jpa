@@ -1,7 +1,6 @@
 package domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -84,4 +83,3 @@ public class Ticket implements Serializable {
     }
     
 }
- 
