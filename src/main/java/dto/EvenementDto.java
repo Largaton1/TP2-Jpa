@@ -1,26 +1,14 @@
-package domain;
+package dto;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import domain.Organisateur;
+import domain.Ticket;
+import domain.statutEvent;
 
-@Entity
-public class Evenement implements Serializable {
+public class EvenementDto {
+    
 
     private Long id;
     private String nomEvent;
@@ -29,22 +17,17 @@ public class Evenement implements Serializable {
     private String description;
     private int capacite;
     private statutEvent statut;
-    private List<Ticket> tickets;
+    private List<TicketDto> tickets;
     private Organisateur organisateur;
-   
-    private Administrateur administrateur;
-
-    
 
 
 
-    public Evenement() {
+
+    public EvenementDto() {
     }
-    
 
-    
-    public Evenement(Long id, String nomEvent, LocalDateTime date, String lieu, String description, int capacite,
-            statutEvent statut) {
+    public EvenementDto(Long id, String nomEvent, LocalDateTime date, String lieu, String description, int capacite,
+            statutEvent statut, List<TicketDto> tickets, Organisateur organisateur) {
         this.id = id;
         this.nomEvent = nomEvent;
         this.date = date;
@@ -52,11 +35,12 @@ public class Evenement implements Serializable {
         this.description = description;
         this.capacite = capacite;
         this.statut = statut;
+        this.tickets = tickets;
+        this.organisateur = organisateur;
     }
 
-   
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
     public Long getId() {
         return id;
     }
@@ -69,8 +53,6 @@ public class Evenement implements Serializable {
     public void setNomEvent(String nomEvent) {
         this.nomEvent = nomEvent;
     }
-
-    @Temporal(TemporalType.DATE)
     public LocalDateTime getDate() {
         return date;
     }
@@ -95,48 +77,22 @@ public class Evenement implements Serializable {
     public void setCapacite(int capacite) {
         this.capacite = capacite;
     }
-
-    @Enumerated(EnumType.STRING)
-	@Column(name="Statut",length = 20)
     public statutEvent getStatut() {
         return statut;
     }
     public void setStatut(statutEvent statut) {
         this.statut = statut;
     }
-
-    @OneToMany(mappedBy = "evenement", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Ticket> getTickets() {
+    public List<TicketDto> getTickets() {
         return tickets;
     }
-
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(List<TicketDto> tickets) {
         this.tickets = tickets;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "organisateur_id", nullable = false)
     public Organisateur getOrganisateur() {
         return organisateur;
     }
-
-
     public void setOrganisateur(Organisateur organisateur) {
         this.organisateur = organisateur;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "administrateur_id", nullable = false)
-    public Administrateur getAdministrateur() {
-        return administrateur;
-    }
-
-
-    public void setAdministrateur(Administrateur administrateur) {
-        this.administrateur = administrateur;
-    }
-
-
-    
-    
 }
