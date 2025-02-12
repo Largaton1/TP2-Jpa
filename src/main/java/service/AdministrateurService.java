@@ -35,7 +35,7 @@ public class AdministrateurService {
         if (admin != null) {
             return new AdministrateurDto(admin.getId(), admin.getNom(), admin.getPrenom(), admin.getEmail(), admin.getPassword(), null);
         }
-        return null;
+        throw new RuntimeException("Administrateur non trouvé");
     }
 
     // Récupérer tous les administrateurs
@@ -55,7 +55,7 @@ public class AdministrateurService {
             administrateurDao.update(admin);
             return new AdministrateurDto(admin.getId(), admin.getNom(), admin.getPrenom(), admin.getEmail(), admin.getPassword(), null);
         }
-        return null;
+        throw new RuntimeException("Administrateur non trouvé");
     }
 
      // Supprimer un administrateur
@@ -64,6 +64,8 @@ public class AdministrateurService {
         if (admin != null) {
             administrateurDao.delete(admin);
             
+        } else {
+            throw new RuntimeException("Administrateur non trouvé");
         }
        
     }

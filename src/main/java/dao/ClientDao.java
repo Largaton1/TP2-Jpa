@@ -13,7 +13,7 @@ public class ClientDao extends AbstractJpaDao<Long, Client> {
     //tout les clients qui sont proprietaire d'un ticket 
     public List<Client> getUserWithOwnerTicket() {
             
-        String query = "SELECT distinc k.owner FROM Client as k";
+        String query = "SELECT distinct k.owner FROM Client as k";
         return this.entityManager.createQuery(query).getResultList();
         
     }

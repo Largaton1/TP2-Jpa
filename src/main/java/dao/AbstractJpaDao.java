@@ -20,7 +20,7 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
         this.clazz = clazzToSet;
 	}
 
-//
+
 
 	public T findOne(K entityId) {
             return entityManager.find(clazz, entityId);
