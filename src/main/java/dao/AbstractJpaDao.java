@@ -4,6 +4,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import domain.Organisateur;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jpa.EntityManagerHelper;
@@ -19,10 +20,10 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
         this.clazz = clazzToSet;
 	}
 
+//
 
-
-	public T findOne(K id) {
-		return entityManager.find(clazz, id);
+	public T findOne(K entityId) {
+            return entityManager.find(clazz, entityId);
 	}
 
 	public List<T> findAll() {
