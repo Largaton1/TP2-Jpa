@@ -11,11 +11,10 @@ public class AdministrateurService {
 
     private AdministrateurDao administrateurDao;
 
-    public AdministrateurService() {    
-    }
+    
 
-    public AdministrateurService(AdministrateurDao administrateurDao) {
-        this.administrateurDao = administrateurDao;
+    public AdministrateurService() {
+        this.administrateurDao = new AdministrateurDao();
     }
     
     // Ajouter un administrateur
