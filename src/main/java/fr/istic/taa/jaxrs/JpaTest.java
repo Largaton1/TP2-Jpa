@@ -34,12 +34,12 @@ public class JpaTest {
 			daoAdmin.save(admin);
             
 
-            // Organisateur organisateur = new Organisateur();
-			// OrganisateurDao daoOrganisateur = new OrganisateurDao();
-            // organisateur.setNom("Organisateur1");
-			// organisateur.setEmail("admin@example.com");
-			// organisateur.setPassword("12345678");
-            // daoOrganisateur.save(organisateur);
+            Organisateur organisateur = new Organisateur();
+			 OrganisateurDao daoOrganisateur = new OrganisateurDao();
+             organisateur.setNom("kone event");
+			 organisateur.setEmail("largaton@example.com");
+			 organisateur.setPassword("12345678");
+             daoOrganisateur.save(organisateur);
 		
 			// Evenement event = new Evenement();
 			// EvenementDao dao = new EvenementDao();

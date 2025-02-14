@@ -1,6 +1,7 @@
 package fr.istic.taa.jaxrs.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import fr.istic.taa.jaxrs.dao.*;
@@ -56,11 +57,13 @@ public class OrganisateurService {
     }
 
     // Supprimer un organisateur
-    public void deleteOrganisateur(long id) {
-        Organisateur organisateur = organisateurDao.findOne(id);
-        if (organisateur != null) {
-            organisateurDao.delete(organisateur);
+    public boolean deleteOrganisateur(Long id) {
+        Optional<Organisateur> organisateur = Optional.ofNullable(organisateurDao.findOne(id));
+        if (organisateur.isPresent()) {
+            organisateurDao.deleteById(id);
+            return true;
         }
+        return false;
     }
 
 }
