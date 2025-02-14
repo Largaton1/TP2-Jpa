@@ -189,14 +189,7 @@ public Response getUpdateForm(@PathParam("id") int id) {
     return Response.ok(html).build();
 }
 
-@PUT
-@Path("/update/{id}")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public Response updateAdmin(@PathParam("id") Long id, AdministrateurDto adminDto) {
-    administrateurService.updateAdministrateur(id, adminDto);
-    return Response.ok().entity("Administrateur mis à jour avec succès").build();
-}
+
 
 
 
@@ -212,11 +205,6 @@ public Response updateAdmin(
 
     // Récupération de l'admin existant
     AdministrateurDto admindto = administrateurService.getAdministrateurById(id);
-    if (admindto == null) {
-        return Response.status(Response.Status.NOT_FOUND)
-                .entity("<html><body><h1>Administrateur non trouvé</h1></body></html>")
-                .build();
-    }
 
     // Mise à jour des champs autorisés
     admindto.setNom(nom);
